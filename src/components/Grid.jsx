@@ -39,6 +39,11 @@ const Grid = () => {
         setOpen(false);
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter')
+        handleSearch();
+    }
+
     const columns = [
         { field: 'id', headerName: 'ID' },
         { field: 'title', headerName: 'Title', width: 300 },
@@ -50,9 +55,10 @@ const Grid = () => {
             <div className="flex items-center gap-5 mb-5 justify-center">
                 <input 
                     id="name" 
-                    type="text" 
+                    type="search" 
                     value={searchText} 
-                    onChange={e => setSearchText(e.target.value)} 
+                    onChange={e => setSearchText(e.target.value)}
+                    onKeyDown={handleKeyDown} 
                     placeholder="Search Here..." 
                     className="p-4 bg-black text-white rounded-lg w-[250px] sm:w-[400px] lg:w-[850px]" 
                 />
